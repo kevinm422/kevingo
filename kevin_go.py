@@ -13,6 +13,7 @@ white_captured_stones = 0
 black_captured_stones = 0
 total_moves = 0
 
+
 def protocol_version(cmd):
     print("2\n\n")
     
@@ -44,7 +45,7 @@ def boardsize(cmd):
     try:
         board_size = int(cmd.split(' ')[1].strip())
         if board_size <= MAX_SIZE and board_size >= MIN_SIZE:
-            print("creating board with size " + str(type(board_size)))
+            print("creating board with size " + str(board_size))
             board = [['.' for i in range(board_size)] for j in range(board_size)]
         else:
             print("size must be between " + str(MIN_SIZE) + " and " + str(MAX_SIZE))
@@ -77,7 +78,7 @@ def komi(cmd):
 
 def play(cmd):
     global board, total_moves
-    color = cmd.split(' ')[1][0]
+    color = cmd.split(' ')[1].upper()[0]
     move = cmd.split(' ')[2]
     col = ALPHA.find(move[0])
     row = board_size - int(move[1:])
@@ -100,7 +101,7 @@ def genmove(cmd):
     color = cmd.split(' ')[1][0]
     print("generating move for " + color)
 
-    while True:
+    for i in range(board_size * board_size):
         row = random.randint(1, board_size)
         col = random.randint(0, board_size-1)
 

@@ -1,1 +1,3 @@
-python3 kevin_go.py
+#!/bin/bash
+
+python kevin_go.py -u
